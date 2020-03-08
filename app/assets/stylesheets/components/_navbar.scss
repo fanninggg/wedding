@@ -113,9 +113,6 @@
   height: 30px;
   border-radius: 50%;
   padding: 5px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   z-index: 2000;
   i {
     color: white;
@@ -124,7 +121,9 @@
   }
   background-color: #AF925D;
   @media(max-width: 735px) {
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
 
