@@ -1,0 +1,28 @@
+<div class="inverted-navbar">
+  <div class="navbar-inner">
+    <div class="navbar-link">
+      <%= link_to "THE DETAILS", root_path, class: "navbar-link-text" %>
+    </div>
+    <div class="navbar-link">
+      <%= link_to "GETTING THERE", root_path, class: "navbar-link-text" %>
+    </div>
+    <div class="navbar-link-text large-navbar-link">
+      Sean & Laura
+    </div>
+    <div class="navbar-link">
+      <%= link_to "ACCOMODATION", root_path, class: "navbar-link-text" %>
+    </div>
+    <div class="navbar-link">
+      <%= link_to "RSVP", new_response_path, class: "navbar-link-text" %>
+    </div>
+  </div>
+</div>
+<div style="margin-top: 150px">
+  <%= simple_form_for(@response) do |f| %>
+    <%= f.input :name %>
+    <%= f.input :attending, collection: ["The Ceremony", "The Reception", "Both"] %>
+    <%= f.input :guests, collection: ["One", "Two", "Three"] %>
+    <%= f.input :message, as: :text %>
+    <%= f.submit %>
+  <% end %>
+</div>
