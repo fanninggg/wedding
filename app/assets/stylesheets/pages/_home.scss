@@ -29,6 +29,10 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  position: relative;
+  @media(max-width: 500px) {
+    min-height: 720px;
+  }
 }
 
 .home-section {
@@ -40,14 +44,20 @@
   color: #AF925D;
 }
 
-.large-text {
-  font-size: 44px;
-  letter-spacing: 5px;
-}
-
 .xl-text {
   font-size: 60px;
   letter-spacing: 5px;
+  @media(max-width: 500px) {
+    font-size: 40px;
+  }
+}
+
+.large-text {
+  font-size: 44px;
+  letter-spacing: 5px;
+  @media(max-width: 500px) {
+    font-size: 34px;
+  }
 }
 
 .landing-section {
@@ -64,6 +74,12 @@
   top: 150px;
   left: 0;
   right: 0;
+  @media(max-width: 735px) {
+    top: 80px;
+  }
+  @media(max-width: 500px) {
+    width: 300px;
+  }
   p {
     letter-spacing: 2px;
     margin: 0;
@@ -75,6 +91,10 @@
     position: absolute;
     top: -50px;
     background-color: #fff;
+    @media(max-width: 500px) {
+      width: 0px;
+      height: 0px;
+    }
   }
   &:after {
     content: '';
@@ -83,6 +103,10 @@
     position: absolute;
     bottom: -50px;
     background-color: #fff;
+    @media(max-width: 500px) {
+      width: 0px;
+      height: 0px;
+    }
   }
 }
 
@@ -120,12 +144,29 @@
   }
 }
 
+.detail-card-holder {
+  width: 50%;
+  @media(max-width: 1300px) {
+    width: 60%;
+  }
+  @media(max-width: 1000px) {
+    width: 70%;
+  }
+  @media(max-width: 775px) {
+    width: 80%;
+    flex-direction: column !important;
+  }
+}
+
 .detail-card {
   width: 250px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  @media(max-width: 775px) {
+    margin: 20px auto;
+  }
 }
 
 .detail-icon {
@@ -141,11 +182,32 @@
   height: 300px;
   width: 800px;
   margin: 0 auto;
+  @media(max-width: 800px) {
+    width: 90%;
+  }
+}
+
+.detail-holder {
+  width: 800px;
+  @media(max-width: 800px) {
+    width: 100%;
+  }
+  @media(max-width: 775px) {
+    flex-direction: column !important;
+  }
 }
 
 .detail-para {
   width: 45%;
   text-align: center;
+  @media(max-width: 775px) {
+    width: 60%;
+    margin: 20px auto;
+  }
+  @media(max-width: 500px) {
+    width: 80%;
+    margin: 20px auto;
+  }
 }
 
 .home-footer {
@@ -180,11 +242,19 @@
   position: relative;
 }
 
+.accomodation-holder {
+  width: 80%;
+  @media(max-width: 775px) {
+    flex-direction: column !important
+  }
+}
+
 .accomodation-card {
   width: 250px;
   height: 200px;
   display: flex;
   flex-direction: column;
+  margin: 0 auto;
   // justify-content: space-around;
   align-items: center;
   background: #fff;

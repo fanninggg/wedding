@@ -1,4 +1,4 @@
-<div class="inverted-navbar">
+<div class="inverted-navbar shared-navbar">
   <div class="navbar-inner">
     <div class="navbar-link">
       <%= link_to "THE DETAILS", root_path, class: "navbar-link-text" %>
@@ -17,12 +17,41 @@
     </div>
   </div>
 </div>
+<div class="burger-menu">
+    <i class="fas fa-bars"></i>
+  </div>
+  <div id="dropdown" class="d-none">
+    <i class="fas fa-times" id="close-btn"></i>
+    <%= link_to "THE DETAILS", root_path, class: "dropdown-option navbar-link-text" %>
+    <div class="divider"></div>
+    <%= link_to "GETTING THERE", root_path, class: "dropdown-option navbar-link-text" %>
+    <div class="divider"></div>
+    <%= link_to "ACCOMODATION", root_path, class: "dropdown-option navbar-link-text" %>
+    <div class="divider"></div>
+    <%= link_to "RSVP", new_response_path, class: "dropdown-option navbar-link-text" %>
+  </div>
 <div style="margin-top: 150px">
   <%= simple_form_for(@response) do |f| %>
     <%= f.input :name %>
     <%= f.input :attending, collection: ["The Ceremony", "The Reception", "Both"] %>
     <%= f.input :guests, collection: ["One", "Two", "Three"] %>
     <%= f.input :message, as: :text %>
-    <%= f.submit %>
+    <%= f.submit class: "btn-primary" %>
   <% end %>
 </div>
+
+<script>
+  window.addEventListener('turbolinks:load', (event) => {
+    const burger = document.querySelector('.burger-menu')
+    const dropdown = document.getElementById('dropdown')
+    const closeBtn = document.getElementById('close-btn')
+    if (burger) {
+      burger.addEventListener('click', (event) => {
+        dropdown.classList.toggle('d-none')
+      })
+      closeBtn.addEventListener('click', (event) => {
+        dropdown.classList.toggle('d-none')
+      })
+    }
+  });
+</script>

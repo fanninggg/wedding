@@ -1,4 +1,4 @@
-<div class="sean-navbar">
+<div class="sean-navbar shared-navbar">
   <div class="navbar-inner">
     <div class="navbar-link">
       <a class="navbar-link-text" href="#details">
@@ -25,6 +25,19 @@
 </div>
 <div id="top"></div>
 <div class="parallax">
+  <div class="burger-menu">
+    <i class="fas fa-bars"></i>
+  </div>
+  <div id="dropdown" class="d-none">
+    <i class="fas fa-times" id="close-btn"></i>
+    <%= link_to "THE DETAILS", root_path, class: "dropdown-option navbar-link-text" %>
+    <div class="divider"></div>
+    <%= link_to "GETTING THERE", root_path, class: "dropdown-option navbar-link-text" %>
+    <div class="divider"></div>
+    <%= link_to "ACCOMODATION", root_path, class: "dropdown-option navbar-link-text" %>
+    <div class="divider"></div>
+    <%= link_to "RSVP", new_response_path, class: "dropdown-option navbar-link-text" %>
+  </div>
 </div>
 <div class="landing-section">
   <p class="gold">Together with their families</p>
@@ -37,7 +50,7 @@
 </div>
 <div class="home-section" id="details">
   <h2 class="large-text garamond gold text-center pt-5">The Details</h2>
-  <div class="d-flex justify-content-around w-50 mx-auto mt-5">
+  <div class="d-flex justify-content-around mx-auto mt-5 detail-card-holder">
     <div class="detail-card">
       <%= image_tag "clock.png", alt: "alttext", class: "detail-icon" %>
       <p class="gold mt-4 mb-5">When</p>
@@ -60,7 +73,7 @@
   <div id="map"
        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
        ></div>
-  <div class="d-flex justify-content-between mx-auto mt-5" style="width: 800px">
+  <div class="d-flex justify-content-between mx-auto mt-5 detail-holder">
     <div class="detail-para">
       <p class="gold bold">Coming From Dublin</p>
       <p class="gold">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae totam similique, in laudantium odit veritatis, aut esse quidem asperiores, deleniti unde! Est dolorum dignissimos laborum, corporis ducimus, iure molestias doloremque?</p>
@@ -74,8 +87,8 @@
 <div class="home-section" id="accomodation">
   <h2 class="large-text garamond gold text-center pt-5">Accomodation</h2>
   <div class="vertical-line mx-auto my-5"></div>
-  <!-- <p class="gold">For those of you wanting to stay nearby, here are our recommendations.</p> -->
-  <div class="d-flex justify-content-around mt-5 mx-auto" style="width: 80%">
+  <p class="gold text-center">For those of you wanting to stay nearby, here are our recommendations.</p>
+  <div class="d-flex justify-content-around mt-5 mx-auto accomodation-holder">
     <div class="accomodation-card">
       <p class="gold bold">VIRGINIA PARK LODGE</p>
       <p class="gold">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus, consectetur amet voluptates.</p>
@@ -88,7 +101,6 @@
       <p class="gold bold">VIRGINIA PARK LODGE</p>
       <p class="gold">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus, consectetur amet voluptates.</p>
     </div>
-
   </div>
 </div>
 <div class="home-footer">
@@ -113,6 +125,17 @@
       })
       const marker = document.querySelector('.mapboxgl-marker');
       marker.firstElementChild.firstElementChild.children[1].style.fill = "#AF925D"
+    }
+    const burger = document.querySelector('.burger-menu')
+    const dropdown = document.getElementById('dropdown')
+    const closeBtn = document.getElementById('close-btn')
+    if (burger) {
+      burger.addEventListener('click', (event) => {
+        dropdown.classList.toggle('d-none')
+      })
+      closeBtn.addEventListener('click', (event) => {
+        dropdown.classList.toggle('d-none')
+      })
     }
   });
 </script>
