@@ -6,19 +6,19 @@ class ResponsesController < ApplicationController
   def create
     @response = Response.new(response_params)
     if @response.save
-      redirect_to root_path
+      redirect_to root_path, notice: "Thankyou for RSVP'ing!"
     else
       render :new
     end
   end
 
   def index
-    @responses = Responses.all
+    @responses = Response.all
   end
 
   private
 
   def response_params
-    params.require(:response).permit(:name, :guests, :attending, :message)
+    params.require(:response).permit(:name, :attending, :diet)
   end
 end

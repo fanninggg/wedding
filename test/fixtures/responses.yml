@@ -2,12 +2,10 @@
 
 one:
   name: MyString
-  guests: MyString
-  attending: MyString
-  message: MyString
+  attending: false
+  diet: MyString
 
 two:
   name: MyString
-  guests: MyString
-  attending: MyString
-  message: MyString
+  attending: false
+  diet: MyString

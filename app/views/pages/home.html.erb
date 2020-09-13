@@ -10,9 +10,9 @@
         GETTING THERE
       </a>
     </div>
-    <div class="navbar-link-text large-navbar-link">
+    <a class="navbar-link-text large-navbar-link" href="#top">
       Sean & Laura
-    </div>
+    </a>
     <div class="navbar-link">
       <a class="navbar-link-text" href="#accomodation">
         ACCOMODATION
@@ -49,38 +49,28 @@
   <a class="gold-button" href="#details">More details</a>
 </div>
 <div class="home-section" id="details">
-  <h2 class="large-text garamond gold text-center pt-5">The Details</h2>
-  <div class="d-flex justify-content-around mx-auto mt-5 detail-card-holder">
-    <div class="detail-card">
-      <%= image_tag "clock.png", alt: "alttext", class: "detail-icon" %>
-      <p class="gold mt-4 mb-5">When</p>
-      <p class="gold">May 22nd, 2021</p>
-      <p class="gold">7:00pm</p>
-    </div>
-    <div class="long-vertical-line mx-auto"></div>
-    <div class="detail-card">
-      <%= image_tag "pin.png", alt: "alttext", class: "detail-icon" %>
-      <p class="gold mt-4 mb-5">Where</p>
-      <p class="gold">Virginia Park Lodge, Virginia</p>
-      <p class="gold">County Cavan, Ireland</p>
-    </div>
+  <%= image_tag "eucalyptus3.png", alt: "Eucalyptus leaves", class: "eucalyptus leaves-top-right" %>
+  <%= image_tag "eucalyptus.png", alt: "Eucalyptus leaves", class: "eucalyptus leaves-bottom-left" %>
+  <h2 class="large-text garamond gold text-center pt-5 pb-3">Details</h2>
+  <div class="details">
+    <%= render "shared/details" %>
   </div>
   <%= link_to "RSVP", new_response_path, class: "gold-button mx-auto my-5"  %>
 </div>
 <div class="home-directions" id="directions">
-  <h2 class="large-text garamond gold text-center pt-5">Getting There</h2>
-  <div class="vertical-line mx-auto my-5"></div>
+  <h2 class="large-text garamond white text-center pt-5">Getting There</h2>
+  <div class="vertical-line white-line mx-auto my-5"></div>
   <div id="map"
        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
        ></div>
   <div class="d-flex justify-content-between mx-auto mt-5 detail-holder">
     <div class="detail-para">
-      <p class="gold bold">Coming From Dublin</p>
-      <p class="gold">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae totam similique, in laudantium odit veritatis, aut esse quidem asperiores, deleniti unde! Est dolorum dignissimos laborum, corporis ducimus, iure molestias doloremque?</p>
+      <p class="white bold">Coming From Dublin</p>
+      <p class="white">We recommend taking the N3/M3 out of Dublin. Hang left at the fork when you arrive in Virginia and the wedding venue will be the second left after the Pergola Nurseries garden centre. </p>
     </div>
     <div class="detail-para">
-      <p class="gold bold">Coming From Wexford</p>
-      <p class="gold">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum quas ipsam ab, praesentium! Repellat consequatur commodi aut neque voluptates minima earum deserunt nesciunt voluptatum. Excepturi odit accusantium vitae, unde dicta.</p>
+      <p class="white bold">Coming From Wexford</p>
+      <p class="white">The fastest route from Wexford is to take the M11 up to Dublin then follow the M50 until the M3 turnoff at Junction 6. Hang left at the fork when you arrive in Virginia and the wedding venue will be the second left after the Pergola Nurseries garden centre.</p>
     </div>
   </div>
 </div>
@@ -110,6 +100,7 @@
       <p class="m-0 link-text">BACK TO TOP</p>
     </div>
   </a>
+  <span class="footer-attribution">Made with love by Hoxton Digital <a href="https://www.hoxton-digital.com/">London Web Developers</a></span>
 </div>
 
 <script>
@@ -137,5 +128,15 @@
         dropdown.classList.toggle('d-none')
       })
     }
+  });
+
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+
+      document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+      });
+    });
   });
 </script>

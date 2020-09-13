@@ -2,9 +2,8 @@ class CreateResponses < ActiveRecord::Migration[6.0]
   def change
     create_table :responses do |t|
       t.string :name
-      t.string :guests
-      t.string :attending
-      t.string :message
+      t.boolean :attending
+      t.string :diet
 
       t.timestamps
     end

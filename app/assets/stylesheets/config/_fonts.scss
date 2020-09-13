@@ -14,3 +14,23 @@ $headers-font: "Nunito", "Helvetica", "sans-serif";
 //        font-url('FontFile.ttf') format('truetype')
 // }
 // $my-font: "Font Name";
+
+.garamond {
+  font-family: "EB Garamond";
+}
+
+.xl-text {
+  font-size: 60px;
+  letter-spacing: 5px;
+  @media(max-width: 500px) {
+    font-size: 40px;
+  }
+}
+
+.large-text {
+  font-size: 44px;
+  letter-spacing: 5px;
+  @media(max-width: 500px) {
+    font-size: 34px;
+  }
+}

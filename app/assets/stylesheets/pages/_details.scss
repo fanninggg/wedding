@@ -1,0 +1,162 @@
+.details {
+  width: 50%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 0;
+  @media(max-width: 500px) {
+    width: 100%;
+    padding: 0 8px;
+  }
+}
+
+.detail {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 200px;
+  @media(max-width: 500px) {
+    height: 140px;
+  }
+}
+
+.detail-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60%;
+  width: 220px;
+  @media(max-width: 500px) {
+    width: 140px;
+  }
+}
+
+.detail-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  width: 140px;
+}
+
+.detail-dots {
+  @media(max-width: 500px) {
+    width: 100%;
+  }
+}
+
+.detail-time {
+  @media(max-width: 500px) {
+    display: none;
+  }
+}
+
+.mobile-detail-time {
+  display: none;
+  @media(max-width: 500px) {
+    display: block;
+  }
+}
+
+.detail-divider-vertical {
+  height: 100%;
+  width: 4px;
+  background-color: #AF925D;
+  position: relative;
+}
+
+.detail-divider-circle {
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  position: absolute;
+  background-color: #AF925D;
+  &.top {
+    top: -6px;
+    left: -6px;
+  }
+  &.bottom {
+    bottom: -6px;
+    left: -6px;
+  }
+}
+
+.detail-info-text {
+  margin: 0;
+  height: 50%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @media(max-width: 500px) {
+    display: inline;
+  }
+}
+
+.detail-title {
+  font-size: 22px;
+  font-weight: bold;
+  display: flex !important;
+  @media(max-width: 500px) {
+    font-size: 18px;
+  }
+}
+
+.detail-description {
+  letter-spacing: -0.5px;
+  width: 70%;
+  font-size: 16px;
+  text-align: center;
+  @media(max-width: 500px) {
+    font-size: 14px;
+    width: 100%;
+  }
+}
+
+.detail-img-holder {
+  height: 60%;
+  width: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @media(max-width: 500px) {
+    width: 140px;
+  }
+}
+
+.detail-img {
+  height: 50%;
+}
+
+.detail-img-wide {
+  height: 40%;
+}
+
+@keyframes glitter {
+  0% {
+    fill: #AF925D;
+   }
+  100% {
+    fill: #eda828;
+  }
+}
+
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+   }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.glitter-svg {
+  animation: glitter 1s linear infinite alternate;
+}
+
+.disco-ball {
+  animation: spin 3s linear infinite alternate;
+}
