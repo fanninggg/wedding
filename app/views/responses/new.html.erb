@@ -29,20 +29,22 @@
   <%= link_to "RSVP", new_response_path, class: "dropdown-option navbar-link-text" %>
 </div>
 <div class="rsvp-container">
-  <%= image_tag "eucalyptus3.png", alt: "Eucalyptus leaves", class: "eucalyptus leaves-top-right" %>
-  <%= image_tag "eucalyptus.png", alt: "Eucalyptus leaves", class: "eucalyptus leaves-bottom-left" %>
+  <%= image_tag "eucalyptus3.png", alt: "Eucalyptus leaves", class: "eucalyptus leaves-top-right rsvp-plant rsvp-plant-1" %>
+  <%= image_tag "eucalyptus.png", alt: "Eucalyptus leaves", class: "eucalyptus leaves-bottom-left rsvp-plant" %>
   <h2 class="medium-text garamond gold pt-5 pb-3">Kindly respond by 21st of October</h2>
     <div class="rsvp-form">
     <%= simple_form_for(@response) do |f| %>
-      <%= f.label :name, "Name(s)", class: "rsvp-label" %>
+      <%= f.label :name, "Name(s)", class: "rsvp-label m-0" %>
       <%= f.input :name, label: false, input_html: { class: "rsvp-input" } %>
-      <%= f.radio_button :attending, true %>
-      <%= f.label :attending, "Joyfully accepts", class: "rsvp-label" %>
-      <br>
-      <%= f.radio_button :attending, false %>
-      <%= f.label :attending, "Regretfully declines", class: "rsvp-label" %>
-      <br>
-      <%= f.label :diet, "Special dietary requirements", class: "rsvp-label" %>
+      <div class="mt-5">
+        <%= f.radio_button :attending, true, :checked => true, :value => true %>
+        <%= f.label :attending, "Joyfully accepts", class: "rsvp-label" %>
+        <br>
+        <%= f.radio_button :attending, false, :value => false %>
+        <%= f.label :attending, "Regretfully declines", class: "rsvp-label" %>
+        <br>
+      </div>
+      <%= f.label :diet, "Special dietary requirements", class: "rsvp-label m-0 mt-5" %>
       <%= f.input :diet, label: false, input_html: { class: "rsvp-input" } %>
       <%= f.submit "RSVP", class: "gold-button mx-auto my-5" %>
     <% end %>

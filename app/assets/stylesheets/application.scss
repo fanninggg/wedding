@@ -8,3 +8,19 @@
 @import "pages/index";
 
 @import 'mapbox-gl/dist/mapbox-gl';
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Open Sans";
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+.alert-info {
+  color: #fff;
+  border-color: #fff;
+  background-color: $gold;
+}
