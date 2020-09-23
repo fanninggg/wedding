@@ -1,22 +1,6 @@
-// Specific CSS for your home-page
-.home-splash {
-  background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.1)), url('https://images.pexels.com/photos/2253870/pexels-photo-2253870.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
-  height: 100vh;
-  background-position: center;
-  background-size: cover;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.home-header {
-  font-size: 88px;
-  font-family: 'Josefin Sans';
+.bold {
   font-weight: bold;
-  color: #fff;
 }
-
-// ******************************* Option Two *******************************
 
 .parallax {
   background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.1)), url("https://images.squarespace-cdn.com/content/v1/5628f991e4b08b10edcb81d4/1556807720988-U8H3ASC7N28VJD0WG5J6/ke17ZwdGBToddI8pDm48kFWxnDtCdRm2WA9rXcwtIYR7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QPOohDIaIeljMHgDF5CVlOqpeNLcJ80NK65_fV7S1UcTSrQkGwCGRqSxozz07hWZrYGYYH8sg4qn8Lpf9k1pYMHPsat2_S1jaQY3SwdyaXg/Virginia+Park+Lodge+Wedding+Photo-74.jpg?format=2500w");
@@ -33,9 +17,6 @@
 }
 
 .home-section {
-  // background: asset-url('leaves.png');
-  // background-size: cover;
-  // background-position: center;
   background-color: #fff;
   position: relative;
   padding: 100px 0;
@@ -91,7 +72,7 @@
   left: 0;
   right: 0;
   @media(max-width: 735px) {
-    top: 80px;
+    top: 40px;
   }
   @media(max-width: 500px) {
     width: 300px;
@@ -167,37 +148,42 @@
   }
 }
 
-.detail-card-holder {
-  width: 50%;
-  @media(max-width: 1300px) {
-    width: 60%;
-  }
-  @media(max-width: 1000px) {
-    width: 70%;
-  }
-  @media(max-width: 775px) {
-    width: 80%;
-    flex-direction: column !important;
-  }
+.day-two-container {
+  padding: 0 80px;
 }
-
-.detail-card {
-  width: 250px;
+.day-two-flex {
   display: flex;
-  flex-direction: column;
-  justify-content: space-around;
   align-items: center;
-  @media(max-width: 775px) {
-    margin: 20px auto;
-  }
+  width: 100%;
+  height: 390px;
+  justify-content: space-between;
+  padding: 40px 0;
 }
 
-.detail-icon {
-  height: 30px;
+.day-two-details {
+  width: 50%;
+  text-align: center;
+}
+
+#carouselExampleControls {
+  width: 600px;
+  height: 400px;
+}
+
+.carousel-inner, .caorusel-item {
+  height: 100%;
+}
+
+.day-two-img {
+  width: 44%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border: 4px solid $gold;
 }
 
 .home-directions {
-  background-color: #8BA892;
+  background-color: $eucalyptus;
   padding: 100px 0;
 }
 
@@ -210,26 +196,13 @@
   }
 }
 
-.detail-holder {
-  width: 800px;
-  @media(max-width: 800px) {
-    width: 100%;
-  }
-  @media(max-width: 775px) {
-    flex-direction: column !important;
-  }
-}
-
-.detail-para {
-  width: 45%;
-  text-align: center;
-  @media(max-width: 775px) {
-    width: 60%;
-    margin: 20px auto;
-  }
-  @media(max-width: 500px) {
-    width: 80%;
-    margin: 20px auto;
+.direction-link {
+  color: #fff;
+  text-decoration: underline;
+  margin-bottom: 16px;
+  display: block;
+  &:hover {
+    color: #fff;
   }
 }
 
@@ -299,3 +272,5 @@
   // top: 50px;
   // left: 25px;
 }
+
+

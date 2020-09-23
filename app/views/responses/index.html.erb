@@ -1,3 +1,11 @@
-<% @responses.each do |response| %>
-  <p><%= response.name %> responded: <%= response.attending %></p>
-<% end %>
+<div id="input-container" class="container">
+  <%= form_for :password, url: responses_path, method: :get do |f| %>
+    <%= f.text_field :password %>
+    <%= f.submit %>
+  <% end %>
+</div>
+<div id="responses-container" class="container">
+  <% @responses.each do |response| %>
+    <%= response.name %>
+  <% end %>
+</div>

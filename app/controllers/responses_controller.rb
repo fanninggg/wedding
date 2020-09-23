@@ -13,7 +13,11 @@ class ResponsesController < ApplicationController
   end
 
   def index
-    @responses = Response.all
+    if params[:password][:password] == "mybrotheristhebest!"
+      @responses = Response.all
+    else
+      @responses = []
+    end
   end
 
   private

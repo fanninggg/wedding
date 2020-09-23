@@ -11,7 +11,7 @@
       </a>
     </div>
     <a class="navbar-link-text large-navbar-link" href="#top">
-      Sean & Laura
+      Laura & Sean
     </a>
     <div class="navbar-link">
       <a class="navbar-link-text" href="#accomodation">
@@ -24,9 +24,14 @@
   </div>
 </div>
 <div id="top"></div>
-<div class="parallax">
-  <div class="burger-menu">
-    <i class="fas fa-bars"></i>
+<div class="parallax" data-controller="menu">
+  <div class="hamburger-holder">
+
+  </div>
+  <div class="hamburger hamburger--spring" data-action="click->menu#toggle">
+    <div class="hamburger-box">
+      <div class="hamburger-inner"></div>
+    </div>
   </div>
   <div id="dropdown" class="d-none">
     <i class="fas fa-times" id="close-btn"></i>
@@ -41,7 +46,7 @@
 </div>
 <div class="landing-section">
   <p class="gold">Together with their families</p>
-  <h1 class="gold garamond xl-text">Sean & Laura</h1>
+  <h1 class="gold garamond xl-text">Laura & Sean</h1>
   <p class="gold text-center">joyfully invite you to their <br> wedding celebration</p>
   <div class="vertical-line"></div>
   <h2 class="gold garamond large-text">May 22, 2021</h2>
@@ -51,9 +56,24 @@
 <div class="home-section" id="details">
   <%= image_tag "eucalyptus3.png", alt: "Eucalyptus leaves", class: "eucalyptus leaves-top-right" %>
   <%= image_tag "eucalyptus.png", alt: "Eucalyptus leaves", class: "eucalyptus leaves-bottom-left" %>
-  <h2 class="large-text garamond gold text-center pt-5 pb-3">Details</h2>
+  <h2 class="large-text garamond gold text-center pt-5 pb-3">Day One</h2>
   <div class="details">
     <%= render "shared/details" %>
+  </div>
+  <h2 class="large-text garamond gold text-center pt-5 pb-3">Day Two</h2>
+  <div class="day-two-container">
+    <div class="day-two-flex">
+      <div class="day-two-details pt-5">
+        <p class="gold pb-4">We would love for you to join us for more celebrations.</p>
+        <p class="gold pb-4">There are beautiful walks around the lake and also the opportunity to play a short round of golf on the attached course.</p>
+        <p class="gold pb-4">A BBQ will be held on the front lawn of Virginia Park Lodge from 4.00pm followed by music and garden games until late.</p>
+      </div>
+      <img src="https://www.virginiaparklodge.com/wp-content/uploads/2019/02/AUTUMN-83-Medium.jpg" alt="" class="day-two-img">
+    </div>
+    <div class="d-flex flex-column align-items-center">
+      <p class="gold text-center pt-5">Children</p>
+      <p class="gold text-center pb-5 w-75">Unfortunately, due to number restrictions, we have been unable to extend our invitations to include any children. Only children involved in the wedding party will be present. We hope that parents can make arrangements so they can join us on our special day.</p>
+    </div>
   </div>
   <%= link_to "RSVP", new_response_path, class: "gold-button mx-auto my-5"  %>
 </div>
@@ -65,39 +85,49 @@
        ></div>
   <div class="d-flex justify-content-between mx-auto mt-5 detail-holder">
     <div class="detail-para">
-      <p class="white bold">Coming From Dublin</p>
-      <p class="white">We recommend taking the N3/M3 out of Dublin. Hang left at the fork when you arrive in Virginia and the wedding venue will be the second left after the Pergola Nurseries garden centre. </p>
+      <p class="white bold">Ceremony</p>
+      <a class="direction-link" target="_blank" href="https://www.google.com/maps/place/Church+of+the+Immaculate+Conception,+Kingscourt/@53.905768,-6.8156468,14.08z/data=!4m5!3m4!1s0x4860acd9f2736acd:0x71e5a20eb90bf8d9!8m2!3d53.9040221!4d-6.8078099">The Church of the Immaculate Conception, Kingscourt, Co. Cavan. A82 E650</a>
+      <p class="white">From Dublin Airport the journey can take an hour.  However please allocate 90 minutes if coming from Dublin City Centre</p>
     </div>
     <div class="detail-para">
-      <p class="white bold">Coming From Wexford</p>
-      <p class="white">The fastest route from Wexford is to take the M11 up to Dublin then follow the M50 until the M3 turnoff at Junction 6. Hang left at the fork when you arrive in Virginia and the wedding venue will be the second left after the Pergola Nurseries garden centre.</p>
+      <p class="white bold">Wedding Reception</p>
+      <a class="direction-link" target="_blank" href="https://www.google.com/maps/place/Virginia+Park+Lodge/@53.8361402,-7.0983423,15.71z/data=!4m8!3m7!1s0x485dfdd25b84110d:0xe58a8afcab37d79e!5m2!4m1!1i2!8m2!3d53.8356524!4d-7.0945159">Virginia Park Lodge, Virginia, Co. Cavan, A82 T2N6</a>
+      <p class="white">From the ceremony this is a 30 minute journey</p>
     </div>
   </div>
 </div>
 <div class="home-section" id="accomodation">
   <h2 class="large-text garamond gold text-center pt-5">Accomodation</h2>
   <div class="vertical-line mx-auto my-5"></div>
-  <p class="gold text-center">For those of you wanting to stay nearby, here are our recommendations.</p>
-  <div class="d-flex justify-content-around mt-5 mx-auto accomodation-holder">
-    <div class="accomodation-card">
-      <p class="gold bold">VIRGINIA PARK LODGE</p>
-      <p class="gold">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus, consectetur amet voluptates.</p>
-    </div>
-    <div class="accomodation-card">
-      <p class="gold bold">VIRGINIA PARK LODGE</p>
-      <p class="gold">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus, consectetur amet voluptates.</p>
-    </div>
-    <div class="accomodation-card">
-      <p class="gold bold">VIRGINIA PARK LODGE</p>
-      <p class="gold">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus, consectetur amet voluptates.</p>
-    </div>
+  <div class="container">
+    <p class="gold bold">On Site</p>
+    <p class="gold">We anticipate a late finish and advise guests to stay on site where possible. There is ample on site accommodation at Virginia Park Lodge for the Saturday and Sunday. </p>
+    <p class="gold">There are a selection of rooms within the Lodge and the cottages.</p>
+    <p class="gold">Please indicate on your RSVP if you require accommodation.</p>
+    <p class="gold mb-5">Please note that we will be allocating accommodation on a first come first served basis. All rooms are double and include breakfast.</p>
+    <p class="gold bold">Alternative accommodation</p>
+    <p class="gold">We recommend that guests stay locally in Virginia Co.Cavan or Kells in Co.Meath.</p>
   </div>
+  <!-- <div class="d-flex justify-content-around mt-5 mx-auto accomodation-holder">
+    <div class="accomodation-card">
+      <p class="gold bold">VIRGINIA PARK LODGE</p>
+      <p class="gold">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus, consectetur amet voluptates.</p>
+    </div>
+    <div class="accomodation-card">
+      <p class="gold bold">VIRGINIA PARK LODGE</p>
+      <p class="gold">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus, consectetur amet voluptates.</p>
+    </div>
+    <div class="accomodation-card">
+      <p class="gold bold">VIRGINIA PARK LODGE</p>
+      <p class="gold">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus, consectetur amet voluptates.</p>
+    </div>
+  </div> -->
 </div>
 <div class="home-footer">
   <a href="#top" class="link">
     <div class="d-flex flex-column align-items-center justify-content-center">
       <%= image_tag "arrow-up.png", alt: "alttext", class: "up-arrow" %>
-      <p class="m-0 link-text">BACK TO TOP</p>
+      <p class="m-0 link-text">Back To Top</p>
     </div>
   </a>
   <span class="footer-attribution">Made with love by <a href="https://www.hoxton-digital.com/services" target="_blank">Hoxton Digital</a></span>
@@ -114,8 +144,10 @@
           navbar.classList.remove('inverted-navbar');
         }
       })
-      const marker = document.querySelector('.mapboxgl-marker');
-      marker.firstElementChild.firstElementChild.children[1].style.fill = "#AF925D"
+      const markers = document.querySelectorAll('.mapboxgl-marker');
+      markers.forEach((marker) => {
+        marker.firstElementChild.firstElementChild.children[1].style.fill = "#AF925D"
+      })
     }
     const burger = document.querySelector('.burger-menu')
     const dropdown = document.getElementById('dropdown')
