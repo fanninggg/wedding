@@ -13,8 +13,16 @@ class ResponsesController < ApplicationController
   end
 
   def index
-    if params[:password][:password] == "mybrotheristhebest!"
-      @responses = Response.all
+    if params[:password]
+      if params[:password][:password] == "mybrotheristhebest!"
+        @responses = Response.all
+        @day_one = @responses.joins(response_attendances: :attendance).where(attendances: { name: "Day One Only" })
+        @both = @responses.joins(response_attendances: :attendance).where(attendances: { name: "Both Days" })
+        @neither = @responses.joins(response_attendances: :attendance).where(attendances: { name: "Cannot Attend" })
+        @accommodation = @responses.where(accommodation: true)
+      else
+        @responses = []
+      end
     else
       @responses = []
     end
@@ -23,6 +31,6 @@ class ResponsesController < ApplicationController
   private
 
   def response_params
-    params.require(:response).permit(:name, :attending, :diet)
+    params.require(:response).permit(:name, :diet, :accommodation, attendance_ids: [])
   end
 end
