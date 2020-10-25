@@ -150,24 +150,33 @@
 
 .day-two-container {
   padding: 0 80px;
+  @media(max-width: 500px) {
+    padding: 0 20px;
+  }
 }
+
 .day-two-flex {
   display: flex;
   align-items: center;
   width: 100%;
-  height: 390px;
+  min-height: 390px;
   justify-content: space-between;
-  padding: 40px 0;
+   @media(max-width: 500px) {
+    flex-direction: column;
+  }
 }
 
 .day-two-details {
   width: 50%;
   text-align: center;
+   @media(max-width: 500px) {
+    width: 100%;
+  }
 }
 
 #carouselExampleControls {
   width: 600px;
-  height: 400px;
+  min-height: 400px;
 }
 
 .carousel-inner, .caorusel-item {
@@ -180,6 +189,9 @@
   object-fit: cover;
   object-position: center;
   border: 4px solid $gold;
+  @media(max-width: 500px) {
+    width: 100%;
+  }
 }
 
 .home-directions {

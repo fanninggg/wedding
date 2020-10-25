@@ -179,10 +179,11 @@ $hamburger-active-hover-filter: $hamburger-hover-filter;
 
 
 .hamburger {
-  @media(min-width: 775px) {
+  @media(min-width: 735px) {
     display: none;
   }
-  display: inline-block;
+  display: none;
+  // display: inline-block;
   position: fixed;
   cursor: pointer;
   z-index: 10;
