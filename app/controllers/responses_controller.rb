@@ -13,19 +13,15 @@ class ResponsesController < ApplicationController
   end
 
   def index
-    if params[:password]
-      if params[:password][:password] == "mybrotheristhebest!"
-        @responses = Response.all
-        @day_one = @responses.joins(response_attendances: :attendance).where(attendances: { name: "Day One Only" })
-        @both = @responses.joins(response_attendances: :attendance).where(attendances: { name: "Both Days" })
-        @neither = @responses.joins(response_attendances: :attendance).where(attendances: { name: "Cannot Attend" })
-        @accommodation = @responses.where(accommodation: true)
-      else
-        @responses = []
-      end
+    if params[:sort] == "attendance"
+      @responses = Response.joins(response_attendances: :attendance).order("attendances.name asc")
     else
-      @responses = []
+      @responses = Response.order(params[:sort])
     end
+    @day_one = @responses.joins(response_attendances: :attendance).where(attendances: { name: "Day One Only" })
+    @both = @responses.joins(response_attendances: :attendance).where(attendances: { name: "Both Days" })
+    @neither = @responses.joins(response_attendances: :attendance).where(attendances: { name: "Cannot Attend" })
+    @accommodation = @responses.where(accommodation: true)
   end
 
   private

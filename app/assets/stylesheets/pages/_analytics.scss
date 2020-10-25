@@ -1,0 +1,42 @@
+.analytics-highlights {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 16px;
+  padding: 16px;
+  @media(max-width: 700px) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.analytics-highlight {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.response-table {
+  width: 100%;
+}
+
+.response-row {
+  width: 100%;
+  height: 40px;
+  align-items: center;
+  td, th {
+    width: 25%;
+    text-align: center;
+  }
+}
+
+.response-header {
+  background-color: rgba(0, 0, 0, 0.8);
+  th a {
+    color: #fff;
+  }
+}
+
+.odd-row {
+  background-color: rgba(0, 0, 0, 0.1);
+  color: #000;
+}

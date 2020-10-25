@@ -1,29 +1,36 @@
-<div id="input-container" class="container">
-  <%= form_for :password, url: responses_path, method: :get do |f| %>
-    <%= f.text_field :password %>
-    <%= f.submit "Go!" %>
-  <% end %>
-</div>
-<div class="analytics-highlights">
-  <div class="analytics-highlight">
-    <h3>Day One Attendees</h3>
-    <p><%= @day_one.length %></p>
+<div class="container">
+  <div class="analytics-highlights">
+    <div class="analytics-highlight">
+      <h5>Day One <br>Attendees</h5>
+      <p><%= @day_one.length %></p>
+    </div>
+    <div class="analytics-highlight">
+      <h5>Both Day <br>Attendees</h5>
+      <p><%= @both.length %></p>
+    </div>
+    <div class="analytics-highlight">
+      <h5>Unable To <br>Attend</h5>
+      <p><%= @neither.length %></p>
+    </div>
+    <div class="analytics-highlight">
+      <h5>Need <br>Accommodation</h5>
+      <p><%= @accommodation.length %></p>
+    </div>
   </div>
-  <div class="analytics-highlight">
-    <h3>Both Day Attendees</h3>
-    <p><%= @both.length %></p>
-  </div>
-  <div class="analytics-highlight">
-    <h3>Cannot Attendees</h3>
-    <p><%= @neither.length %></p>
-  </div>
-  <div class="analytics-highlight">
-    <h3>Need Accommodation</h3>
-    <p><%= @accommodation.length %></p>
-  </div>
-</div>
-<div id="responses-container" class="container">
-  <% @responses.each do |response| %>
-    <%= response.name %>
-  <% end %>
+  <table class="response-table">
+    <tr class="response-row response-header">
+      <th><%= link_to "Name", sort: "name" %></th>
+      <th><%= link_to "Attendance", sort: "attendance" %></th>
+      <th><%= link_to "Dietary Requirements", sort: "diet" %></th>
+      <th><%= link_to "Accommodation", sort: "accommodation" %></th>
+    </tr>
+    <% @responses.each_with_index do |response, index| %>
+      <tr class="<%= index.odd? ? 'response-row odd-row' : 'response-row' %>">
+        <td><%= response.name %></td>
+        <td><%= Attendance.find(response.attendance_ids).first.name %></td>
+        <td><%= response.diet.blank? ? 'N/A' : response.diet %></td>
+        <td><%= response.accommodation %></td>
+      </tr>
+    <% end %>
+  </table>
 </div>
