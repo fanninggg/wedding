@@ -6,7 +6,7 @@
     <div class="navbar-link">
       <%= link_to "GETTING THERE", root_path(anchor: "directions"), class: "navbar-link-text" %>
     </div>
-    <%= link_to "Sean & Laura", root_path, class: "navbar-link-text large-navbar-link" %>
+    <%= link_to "Laura & Sean", root_path, class: "navbar-link-text large-navbar-link" %>
     <div class="navbar-link">
       <%= link_to "ACCOMODATION", root_path(anchor: "accomodation"), class: "navbar-link-text" %>
     </div>
@@ -15,54 +15,65 @@
     </div>
   </div>
 </div>
-<button class="hamburger hamburger--spring" type="button">
-  <span class="hamburger-box">
-    <span class="hamburger-inner"></span>
-  </span>
-</button>
-<div id="dropdown" class="d-none">
-  <i class="fas fa-times" id="close-btn"></i>
-  <%= link_to "THE DETAILS", root_path, class: "dropdown-option navbar-link-text" %>
-  <div class="divider"></div>
-  <%= link_to "GETTING THERE", root_path, class: "dropdown-option navbar-link-text" %>
-  <div class="divider"></div>
-  <%= link_to "ACCOMODATION", root_path, class: "dropdown-option navbar-link-text" %>
-  <div class="divider"></div>
-  <%= link_to "RSVP", new_response_path, class: "dropdown-option navbar-link-text" %>
+<div id="top"></div>
+<div class="" data-controller="menu">
+  <div class="hamburger-holder">
+    <%= image_tag "favicon.ico", alt: "alttext" %>
+    <div class="hamburger hamburger--spring" data-action="click->menu#toggleNavbar">
+      <div class="hamburger-box">
+        <div class="hamburger-inner"></div>
+      </div>
+    </div>
+  </div>
+  <div id="dropdown" data-target="menu.dropdown">
+    <%= link_to "THE DETAILS", root_path, class: "dropdown-option navbar-link-text" %>
+    <div class="divider"></div>
+    <%= link_to "GETTING THERE", root_path, class: "dropdown-option navbar-link-text" %>
+    <div class="divider"></div>
+    <%= link_to "ACCOMODATION", root_path, class: "dropdown-option navbar-link-text" %>
+    <div class="divider"></div>
+    <%= link_to "RSVP", new_response_path, class: "dropdown-option navbar-link-text" %>
+  </div>
 </div>
 <div class="rsvp-container" data-controller="rsvp">
   <%= image_tag "eucalyptus3.png", alt: "Eucalyptus leaves", class: "eucalyptus leaves-top-right rsvp-plant rsvp-plant-1" %>
   <%= image_tag "eucalyptus.png", alt: "Eucalyptus leaves", class: "eucalyptus leaves-bottom-left rsvp-plant" %>
-  <h2 class="medium-text garamond gold pt-5 pb-3">Kindly respond by 21st of October</h2>
+  <% if params[:message] %>
+    <h2 class="medium-text garamond gold pt-5 pb-3"><%= params[:message] %></h2>
+    <%= link_to "Add another atendee", new_response_path, class: "gold-button", style: "width: 250px" %>
+  <% else %>
     <div class="rsvp-form">
-    <%= simple_form_for(@response) do |f| %>
-      <%= f.label :name, "Name of first attendee", class: "rsvp-label m-0" %>
-      <%= f.input :name, label: false,input_html: { class: "rsvp-input" } %>
-      <fieldset class="form-group check_boxes optional response_attendances">
-        <legend class="col-form-label pt-0">Will be attending:</legend>
-        <input type="hidden" name="response[attendance_ids][]" value="">
-        <div class="form-check">
-          <input class="form-check-input check_boxes optional" type="checkbox" value="1" name="response[attendance_ids][]" id="response_attendance_ids_1" data-action="click->rsvp#toggleAttendance" data-target="rsvp.checkbox">
-          <label class="form-check-label collection_check_boxes" for="response_attendance_ids_1">Day One Only</label>
+      <h2 class="medium-text garamond gold pt-5 pb-3">Kindly respond by 21st of October</h2>
+      <%= simple_form_for(@response) do |f| %>
+        <%= f.label :name, "Name of attendee", class: "rsvp-label m-0" %>
+        <%= f.input :name, label: false, input_html: { class: "rsvp-input" } %>
+        <fieldset class="form-group check_boxes optional response_attendances">
+          <legend class="col-form-label pt-0">Will be attending:</legend>
+          <input type="hidden" name="attending" value="">
+          <div class="form-check">
+            <input class="form-check-input check_boxes optional" type="checkbox" value="1" id="attending_1" data-action="click->rsvp#toggleAttendance" data-target="rsvp.checkbox">
+            <label class="form-check-label collection_check_boxes" for="attending_1">Day One Only</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input check_boxes optional" type="checkbox" value="2" id="attending_2" data-action="click->rsvp#toggleAttendance" data-target="rsvp.checkbox">
+            <label class="form-check-label collection_check_boxes" for="attending_2">Both Days</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input check_boxes optional" type="checkbox" value="3" id="attending_3" data-action="click->rsvp#toggleAttendance" data-target="rsvp.checkbox">
+            <label class="form-check-label collection_check_boxes" for="attending_3">Neither</label>
+          </div>
+        </fieldset>
+        <%= f.input :attending, label: false, input_html: { class: "d-none", data: { target: "rsvp.attendingInput" } } %>
+        <%= f.label :diet, "Special dietary requirements", class: "rsvp-label m-0 mt-3" %>
+        <%= f.input :diet, label: false, placeholder: "This will be a dropdown menu of dietary options",input_html: { class: "rsvp-input" } %>
+        <div class="d-flex">
+          <%= f.input :accommodation, label: false %>
+          <%= f.label :accommodation, "Accommodation Required", class: "rsvp-label" %>
         </div>
-        <div class="form-check">
-          <input class="form-check-input check_boxes optional" type="checkbox" value="2" name="response[attendance_ids][]" id="response_attendance_ids_2" data-action="click->rsvp#toggleAttendance" data-target="rsvp.checkbox">
-          <label class="form-check-label collection_check_boxes" for="response_attendance_ids_2">Both Days</label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input check_boxes optional" type="checkbox" value="3" name="response[attendance_ids][]" id="response_attendance_ids_3" data-action="click->rsvp#toggleAttendance" data-target="rsvp.checkbox">
-          <label class="form-check-label collection_check_boxes" for="response_attendance_ids_3">Neither</label>
-        </div>
-      </fieldset>
-      <%= f.label :diet, "Special dietary requirements", class: "rsvp-label m-0 mt-3" %>
-      <%= f.input :diet, label: false, placeholder: "This will be a dropdown menu of dietary options",input_html: { class: "rsvp-input" } %>
-      <div class="d-flex">
-        <%= f.input :accommodation, label: false %>
-        <%= f.label :accommodation, "Accommodation Required", class: "rsvp-label" %>
-      </div>
-      <%= f.submit "RSVP", class: "gold-button mx-auto my-5" %>
-    <% end %>
-  </div>
+        <%= f.submit "RSVP", class: "gold-button mx-auto my-5" %>
+      <% end %>
+    </div>
+  <% end %>
 </div>
 
 <script>

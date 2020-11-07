@@ -58,6 +58,9 @@
   &:hover:after {
     transform: scaleX(1);
   }
+  @media(max-width: 735px) {
+    font-size: 16px;
+  }
 }
 
 .large-navbar-link {
@@ -99,56 +102,26 @@
   }
 }
 
-
-
-
-
-.burger-menu {
-  display: none;
-  position: fixed;
-  top: 25px;
-  right: 25px;
-  cursor: pointer;
-  width: 30px;
-  height: 30px;
-  padding: 5px;
-  z-index: 2000;
-  i {
-    color: white;
-    font-size: 20px;
-    margin-left: 1px;
-  }
-  background-color: #AF925D;
-  @media(max-width: 735px) {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-}
-
-.burger-img {
-  position: relative;
-  top: 25px;
-  right: 25px;
-  width: 30px;
-}
-
 #dropdown {
+  display: none;
   background-color: white;
-  border: 2px solid #AF925D;
+  border-bottom: 2px solid #AF925D;
   position: fixed;
-  top: 20px;
+  top: 0;
+  left: 0;
   right: 20px;
-  width: 200px;
-  z-index: 3000;
+  width: 100%;
+  z-index: 5;
   padding: 20px;
-  #close-btn {
-    position: fixed;
-    top: 30px;
-    right: 30px;
-    color: #AF925D;
-    font-size: 20px;
-  }
+  transition: height 0.5s;
+  overflow: hidden;
+}
+
+.dropdown-open {
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  padding: 100px 0 20px 0 !important ;
 }
 
 .dropdown-option {
@@ -161,6 +134,30 @@
   height: 1px;
   background-color: #AF925D;
   margin: 10px 0;
+  @media(max-width: 735px) {
+    width: 180px;
+  }
+}
+
+.hamburger-holder {
+  height: 80px;
+  width: 100%;
+  position: fixed;
+  background-color: #fff;
+  top: 0;
+  left: 0;
+  z-index: 8;
+  border-bottom: 2px solid $gold;
+  @media(min-width: 735px) {
+    display: none;
+  }
+  img {
+    height: 60px;
+    position: fixed;
+    z-index: 10;
+    left: 16px;
+    top: 16px;
+  }
 }
 
 $hamburger-padding-x           : 15px;
@@ -182,8 +179,8 @@ $hamburger-active-hover-filter: $hamburger-hover-filter;
   @media(min-width: 735px) {
     display: none;
   }
-  display: none;
-  // display: inline-block;
+  // display: none;
+  display: inline-block;
   position: fixed;
   cursor: pointer;
   z-index: 10;

@@ -17,6 +17,9 @@
 
 .response-table {
   width: 100%;
+  @media(max-width: 700px) {
+    font-size: 12px
+  }
 }
 
 .response-row {
@@ -30,7 +33,7 @@
 }
 
 .response-header {
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: $gold;
   th a {
     color: #fff;
   }
@@ -40,3 +43,29 @@
   background-color: rgba(0, 0, 0, 0.1);
   color: #000;
 }
+
+.password-holder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 200px 0;
+}
+
+.password {
+  width: 300px;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

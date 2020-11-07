@@ -1,36 +1,55 @@
 <div class="container">
-  <div class="analytics-highlights">
-    <div class="analytics-highlight">
-      <h5>Day One <br>Attendees</h5>
-      <p><%= @day_one.length %></p>
+  <% if params[:password] %>
+    <% if params[:password][:name] == "mybrotheristhebest" %>
+      <div class="analytics-highlights">
+        <div class="analytics-highlight">
+          <h5>Day One <br>Attendees</h5>
+          <p><%= @day_one.length %></p>
+        </div>
+        <div class="analytics-highlight">
+          <h5>Both Day <br>Attendees</h5>
+          <p><%= @both.length %></p>
+        </div>
+        <div class="analytics-highlight">
+          <h5>Unable To <br>Attend</h5>
+          <p><%= @neither.length %></p>
+        </div>
+        <div class="analytics-highlight">
+          <h5>Need <br>Accommodation</h5>
+          <p><%= @accommodation.length %></p>
+        </div>
+      </div>
+      <p class="gold">Sort table by clicking a header</p>
+      <table class="response-table">
+        <tr class="response-row response-header">
+          <th><%= link_to "Name", sort: "name" %></th>
+          <th><%= link_to "Attendance", sort: "attending" %></th>
+          <th><%= link_to "Dietary Requirements", sort: "diet" %></th>
+          <th><%= link_to "Accommodation", sort: "accommodation" %></th>
+        </tr>
+        <% @responses.each_with_index do |response, index| %>
+          <tr class="<%= index.odd? ? 'response-row odd-row' : 'response-row' %>">
+            <td><%= response.name %></td>
+            <td><%= response.display_attendance %></td>
+            <td><%= response.diet.blank? ? 'None' : response.diet %></td>
+            <td><%= response.accommodation %></td>
+          </tr>
+        <% end %>
+      </table>
+    <% else %>
+      <div class="password-holder">
+        <%= simple_form_for :password, url: responses_path, method: :get do |f| %>
+          <%= f.input :name, label: false %>
+          <%= f.submit "Submit Password", class: "gold-button w-100" %>
+        <% end  %>
+      </div>
+    <% end %> 
+  <% else %>
+    <div class="password-holder">
+      <%= simple_form_for :password, url: responses_path, method: :get do |f| %>
+        <%= f.input :name, label: false %>
+        <%= f.submit "Submit Password", class: "gold-button w-100" %>
+      <% end  %>
     </div>
-    <div class="analytics-highlight">
-      <h5>Both Day <br>Attendees</h5>
-      <p><%= @both.length %></p>
-    </div>
-    <div class="analytics-highlight">
-      <h5>Unable To <br>Attend</h5>
-      <p><%= @neither.length %></p>
-    </div>
-    <div class="analytics-highlight">
-      <h5>Need <br>Accommodation</h5>
-      <p><%= @accommodation.length %></p>
-    </div>
-  </div>
-  <table class="response-table">
-    <tr class="response-row response-header">
-      <th><%= link_to "Name", sort: "name" %></th>
-      <th><%= link_to "Attendance", sort: "attendance" %></th>
-      <th><%= link_to "Dietary Requirements", sort: "diet" %></th>
-      <th><%= link_to "Accommodation", sort: "accommodation" %></th>
-    </tr>
-    <% @responses.each_with_index do |response, index| %>
-      <tr class="<%= index.odd? ? 'response-row odd-row' : 'response-row' %>">
-        <td><%= response.name %></td>
-        <td><%= Attendance.find(response.attendance_ids).first.name %></td>
-        <td><%= response.diet.blank? ? 'N/A' : response.diet %></td>
-        <td><%= response.accommodation %></td>
-      </tr>
-    <% end %>
-  </table>
+  <% end %>
 </div>

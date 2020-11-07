@@ -10,34 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_26_114916) do
+ActiveRecord::Schema.define(version: 2020_09_13_213012) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "attendances", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "response_attendances", force: :cascade do |t|
-    t.bigint "response_id", null: false
-    t.bigint "attendance_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["attendance_id"], name: "index_response_attendances_on_attendance_id"
-    t.index ["response_id"], name: "index_response_attendances_on_response_id"
-  end
-
   create_table "responses", force: :cascade do |t|
     t.string "name"
-    t.text "diet"
+    t.integer "attending"
+    t.string "diet"
+    t.boolean "accommodation"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.boolean "accommodation"
   end
 
-  add_foreign_key "response_attendances", "attendances"
-  add_foreign_key "response_attendances", "responses"
 end

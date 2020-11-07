@@ -1,9 +1,10 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = [  ]
+  static targets = [ "dropdown" ]
 
-  toggle(event) {
-    event.currentTarget.classList.toggle('is-active')
+  toggleNavbar(event) {
+  	this.dropdownTarget.classList.toggle('dropdown-open');
+  	event.currentTarget.classList.toggle('is-active')
   }
 }

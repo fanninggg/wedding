@@ -1,7 +1,7 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = [ 'checkbox' ]
+  static targets = [ 'checkbox', "attendingInput" ]
 
   closeFlash(event) {
     event.currentTarget.parentNode.remove()
@@ -11,6 +11,7 @@ export default class extends Controller {
     this.checkboxTargets.forEach((checkbox) => {
       checkbox.checked = false
     })
+    this.attendingInputTarget.value = event.currentTarget.value
     event.currentTarget.checked = true
   }
 }

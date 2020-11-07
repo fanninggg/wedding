@@ -1,7 +1,15 @@
 class Response < ApplicationRecord
   validates :name, presence: true
-  validates :response_attendances, presence: true
+  validates :attending, presence: true
 
-  has_many :response_attendances
-  has_many :attendances, through: :response_attendances
+  def display_attendance
+  	case attending
+  	when 1
+  		"Day One Only"
+		when 2
+  		"Both Days"
+		when 3
+  		"Neither"
+  	end
+  end
 end

@@ -26,15 +26,14 @@
 <div id="top"></div>
 <div class="parallax" data-controller="menu">
   <div class="hamburger-holder">
-
-  </div>
-  <div class="hamburger hamburger--spring" data-action="click->menu#toggle">
-    <div class="hamburger-box">
-      <div class="hamburger-inner"></div>
+    <%= image_tag "favicon.ico", alt: "alttext" %>
+    <div class="hamburger hamburger--spring" data-action="click->menu#toggleNavbar">
+      <div class="hamburger-box">
+        <div class="hamburger-inner"></div>
+      </div>
     </div>
   </div>
-  <div id="dropdown" class="d-none">
-    <i class="fas fa-times" id="close-btn"></i>
+  <div id="dropdown" data-target="menu.dropdown">
     <%= link_to "THE DETAILS", root_path, class: "dropdown-option navbar-link-text" %>
     <div class="divider"></div>
     <%= link_to "GETTING THERE", root_path, class: "dropdown-option navbar-link-text" %>
@@ -133,6 +132,11 @@
   <span class="footer-attribution">Made with love by <a href="https://www.hoxton-digital.com/services" target="_blank">Hoxton Digital</a></span>
 </div>
 
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
+
 <script>
   window.addEventListener('turbolinks:load', (event) => {
     const navbar = document.querySelector('.sean-navbar')
@@ -147,17 +151,6 @@
       const markers = document.querySelectorAll('.mapboxgl-marker');
       markers.forEach((marker) => {
         marker.firstElementChild.firstElementChild.children[1].style.fill = "#AF925D"
-      })
-    }
-    const burger = document.querySelector('.burger-menu')
-    const dropdown = document.getElementById('dropdown')
-    const closeBtn = document.getElementById('close-btn')
-    if (burger) {
-      burger.addEventListener('click', (event) => {
-        dropdown.classList.toggle('d-none')
-      })
-      closeBtn.addEventListener('click', (event) => {
-        dropdown.classList.toggle('d-none')
       })
     }
   });
