@@ -4,7 +4,7 @@ class CreateResponses < ActiveRecord::Migration[6.0]
       t.string :name
       t.integer :attending
       t.string :diet
-      t.boolean :accommodation 
+      t.string :accommodation 
 
       t.timestamps
     end

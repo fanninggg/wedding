@@ -21,7 +21,8 @@ class ResponsesController < ApplicationController
     @day_one = @responses.where(attending: 1)
     @both = @responses.where(attending: 2)
     @neither = @responses.where(attending: 3)
-    @accommodation = @responses.where(accommodation: true)
+    @saturday_accommodation = @responses.where(accommodation: 'Saturday Night').or(@responses.where(accommodation: 'Both'))
+    @sunday_accommodation = @responses.where(accommodation: 'Sunday Night').or(@responses.where(accommodation: 'Both'))
   end
 
   private

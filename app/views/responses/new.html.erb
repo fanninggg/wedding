@@ -43,9 +43,9 @@
     <%= link_to "Add another atendee", new_response_path, class: "gold-button", style: "width: 250px" %>
   <% else %>
     <div class="rsvp-form">
-      <h2 class="medium-text garamond gold pt-5 pb-3">Kindly respond by 21st of October</h2>
+      <h2 class="medium-text garamond gold pt-5 pb-3">Kindly respond by 4th of February</h2>
       <%= simple_form_for(@response) do |f| %>
-        <%= f.label :name, "Name of attendee", class: "rsvp-label m-0" %>
+        <%= f.label :name, "Name(s)", class: "rsvp-label m-0" %>
         <%= f.input :name, label: false, input_html: { class: "rsvp-input" } %>
         <fieldset class="form-group check_boxes optional response_attendances">
           <legend class="col-form-label pt-0">Will be attending:</legend>
@@ -66,10 +66,8 @@
         <%= f.input :attending, label: false, input_html: { class: "d-none", data: { target: "rsvp.attendingInput" } } %>
         <%= f.label :diet, "Special dietary requirements", class: "rsvp-label m-0 mt-3" %>
         <%= f.input :diet, label: false, placeholder: "Vegan, vegetarian, coeliac, etc", input_html: { class: "rsvp-input" } %>
-        <div class="d-flex">
-          <%= f.input :accommodation, label: false %>
-          <%= f.label :accommodation, "Accommodation Required", class: "rsvp-label" %>
-        </div>
+        <%= f.label :accommodation, "Accommodation", class: "rsvp-label ml-0 mt-3" %>
+        <%= f.input :accommodation, label: false, collection: ["Saturday Night", "Sunday Night", "Both"], prompt: 'Not needed' %>
         <%= f.submit "RSVP", class: "gold-button mx-auto my-5" %>
       <% end %>
     </div>

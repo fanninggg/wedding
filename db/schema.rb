@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 2020_09_13_213012) do
     t.string "name"
     t.integer "attending"
     t.string "diet"
-    t.boolean "accommodation"
+    t.string "accommodation"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

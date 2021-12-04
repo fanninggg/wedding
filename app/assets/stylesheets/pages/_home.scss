@@ -163,6 +163,7 @@
   width: 100%;
   min-height: 390px;
   justify-content: space-between;
+  padding: 40px 0;
    @media(max-width: 500px) {
     flex-direction: column;
   }
@@ -201,6 +202,11 @@
   padding: 100px 0;
 }
 
+.home-faqs {
+  background-color: $gold;
+  padding: 100px 0;
+}
+
 #map {
   height: 300px;
   width: 800px;
@@ -221,7 +227,7 @@
 }
 
 .home-footer {
-  background-color: #AF925D;
+  background-color: #fff;
   height: 200px;
   display: flex;
   flex-direction: column;
@@ -253,7 +259,7 @@
 }
 
 .link-text {
-  color: #fff;
+  color: $gold;
   text-decoration: none;
   letter-spacing: 2px;
 }
@@ -287,4 +293,11 @@
   // left: 25px;
 }
 
+.white-link {
+  color: #fff;
+  text-decoration: underline;
+  &:hover {
+    color: #fff;
 
+  }
+}
