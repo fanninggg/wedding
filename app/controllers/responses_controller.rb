@@ -31,3 +31,4 @@ class ResponsesController < ApplicationController
     params.require(:response).permit(:name, :diet, :accommodation, :attending)
   end
 end
+
