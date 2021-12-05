@@ -32,3 +32,4 @@ class ResponsesController < ApplicationController
   end
 end
 
+
